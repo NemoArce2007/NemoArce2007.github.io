@@ -1,7 +1,7 @@
 ---
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { formatDate, getPosts, type Post } from '../../lib/posts';
+import { getPosts, type Post } from '../../lib/posts';
 
 export async function getStaticPaths() {
 	const posts = await getPosts();
@@ -17,6 +17,15 @@ interface Props {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const publishedAt = new Intl.DateTimeFormat('sv-SE', {
+	timeZone: 'Asia/Shanghai',
+	year: 'numeric',
+	month: '2-digit',
+	day: '2-digit',
+	hour: '2-digit',
+	minute: '2-digit',
+	hour12: false,
+}).format(post.data.date);
 ---
 
 <BaseLayout
@@ -29,7 +38,8 @@ const { Content } = await render(post);
 	<article>
 		<header class="article-header">
 			<p class="post-meta">
-				<time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+				<time datetime={post.data.date.toISOString()}>{publishedAt} (UTC+8)</time>
+				{post.data.author && <span>By {post.data.author}</span>}
 				<span>{post.data.category}</span>
 				{post.data.tags.map((tag) => (
 					<span>{tag}</span>
