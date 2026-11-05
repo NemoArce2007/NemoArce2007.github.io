@@ -1,0 +1,39 @@
+---
+import { buildToc, type Heading } from '../lib/toc';
+
+interface Props {
+	headings: Heading[];
+}
+
+const { headings } = Astro.props;
+const toc = buildToc(headings);
+---
+
+{
+	toc.length > 0 && (
+		<details class="toc">
+			<summary>
+				<span class="toc-closed">Show table of contents</span>
+				<span class="toc-open">Hide table of contents</span>
+			</summary>
+			<nav aria-label="Table of contents">
+				<ol>
+					{toc.map((entry) => (
+						<li>
+							<a href={`#${entry.slug}`}>{entry.text}</a>
+							{entry.children.length > 0 && (
+								<ol>
+									{entry.children.map((child) => (
+										<li>
+											<a href={`#${child.slug}`}>{child.text}</a>
+										</li>
+									))}
+								</ol>
+							)}
+						</li>
+					))}
+				</ol>
+			</nav>
+		</details>
+	)
+}

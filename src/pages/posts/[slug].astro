@@ -1,7 +1,8 @@
 ---
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getPosts, type Post } from '../../lib/posts';
+import TableOfContents from '../../components/TableOfContents.astro';
+import { getPosts, tagPath, type Post } from '../../lib/posts';
 
 export async function getStaticPaths() {
 	const posts = await getPosts();
@@ -16,7 +17,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 const publishedAt = new Intl.DateTimeFormat('sv-SE', {
 	timeZone: 'Asia/Shanghai',
 	year: 'numeric',
@@ -42,11 +43,12 @@ const publishedAt = new Intl.DateTimeFormat('sv-SE', {
 				{post.data.author && <span>By {post.data.author}</span>}
 				<span>{post.data.category}</span>
 				{post.data.tags.map((tag) => (
-					<span>{tag}</span>
+					<a href={tagPath(tag)}>{tag}</a>
 				))}
 			</p>
 			<h1>{post.data.title}</h1>
 		</header>
+		<TableOfContents headings={headings} />
 		<div class="prose" lang={post.data.lang}>
 			<Content />
 		</div>

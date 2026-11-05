@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { collectTagArchives, getPublishedPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+	const archives = collectTagArchives(await getPublishedPosts());
+	return archives.map((archive) => ({
+		params: { slug: archive.slug },
+		props: { tag: archive.tag, posts: archive.posts },
+	}));
+}
+
+interface Props {
+	tag: string;
+	posts: Awaited<ReturnType<typeof getPublishedPosts>>;
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout
+	title={`Tag: ${tag}`}
+	description={`Published articles tagged ${tag}.`}
+	current="posts"
+>
+	<p class="page-kicker">Tags</p>
+	<h1 class="page-title">Tag: {tag}</h1>
+	{
+		posts.length === 0 ? (
+			<p class="empty">No published articles with this tag.</p>
+		) : (
+			<PostList posts={posts} />
+		)
+	}
+</BaseLayout>
