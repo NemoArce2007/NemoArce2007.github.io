@@ -1,0 +1,16 @@
+---
+import { SITE } from '../lib/site';
+
+const year = new Date().getUTCFullYear();
+---
+
+<footer class="site-footer">
+	<div class="shell">
+		<p>© {year} {SITE.title}</p>
+		<p>
+			<a href="/rss.xml">RSS</a>
+			{' · '}
+			<a href={SITE.github}>{SITE.handle}</a>
+		</p>
+	</div>
+</footer>

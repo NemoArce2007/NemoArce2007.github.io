@@ -1,0 +1,38 @@
+---
+import { formatDate, postPath, type Post } from '../lib/posts';
+
+interface Props {
+	posts: Post[];
+	headingLevel?: 'h2' | 'h3';
+}
+
+const { posts, headingLevel = 'h2' } = Astro.props;
+---
+
+{
+	posts.length === 0 ? (
+		<p class="empty">还没有已发布的文章。</p>
+	) : (
+		<ul class="post-list">
+			{posts.map((post) => (
+				<li>
+					<p class="post-meta">
+						<time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+						<span>{post.data.category}</span>
+						{post.data.draft && <span>草稿</span>}
+					</p>
+					{headingLevel === 'h3' ? (
+						<h3>
+							<a href={postPath(post)}>{post.data.title}</a>
+						</h3>
+					) : (
+						<h2>
+							<a href={postPath(post)}>{post.data.title}</a>
+						</h2>
+					)}
+					<p>{post.data.description}</p>
+				</li>
+			))}
+		</ul>
+	)
+}

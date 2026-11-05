@@ -1,0 +1,63 @@
+---
+import { SITE } from '../lib/site';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	lang?: 'zh' | 'en';
+	current?: 'home' | 'posts' | 'about' | 'post';
+}
+
+const {
+	title,
+	description = SITE.description,
+	lang = 'zh',
+	current = 'home',
+} = Astro.props;
+
+const pageTitle = title ? `${title} · ${SITE.title}` : SITE.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const rssHref = new URL('/rss.xml', Astro.site);
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<link rel="alternate" type="application/rss+xml" title={SITE.title} href={rssHref} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content={current === 'post' ? 'article' : 'website'} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'zh_CN'} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<a class="skip-link" href="#content">跳到正文</a>
+		<Header current={current} />
+		<main id="content">
+			<div class="shell">
+				<slot />
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

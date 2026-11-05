@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/site';
+---
+
+<BaseLayout title="关于" description={`关于 ${SITE.title}。`} current="about">
+	<p class="page-kicker">关于</p>
+	<h1 class="page-title">{SITE.title}</h1>
+	<div class="prose">
+		<p>我是 {SITE.owner}（{SITE.handle}）。</p>
+		<p>
+			GitHub：<a href={SITE.github}>{SITE.handle}</a>
+		</p>
+	</div>
+</BaseLayout>
