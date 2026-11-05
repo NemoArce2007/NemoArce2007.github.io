@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
-  "description": "Jimmy Xu 的公开工作台：Astro 长文博客，部署于 GitHub Pages。",
+  "description": "NemoArce's Blog：Astro 长文博客，部署于 GitHub Pages。",
   "engines": {
     "node": ">=22.23.4"
   },

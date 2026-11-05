@@ -89,6 +89,7 @@ a:focus-visible {
 	letter-spacing: 0.01em;
 	color: inherit;
 	text-decoration: none;
+	text-wrap: balance;
 }
 
 .site-title:hover {

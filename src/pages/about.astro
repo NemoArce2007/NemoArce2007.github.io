@@ -3,12 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE } from '../lib/site';
 ---
 
-<BaseLayout title="关于" description="关于 Jimmy Xu 与这间公开工作台。" current="about">
+<BaseLayout title="关于" description={`关于 ${SITE.title}。`} current="about">
 	<p class="page-kicker">关于</p>
-	<h1 class="page-title">{SITE.owner}</h1>
+	<h1 class="page-title">{SITE.title}</h1>
 	<div class="prose">
 		<p>
-			我是 {SITE.owner}（{SITE.handle}）。这是一间公开工作台，用来写长文：工程笔记、产品判断、观念，以及偶尔的随笔。
+			这里是 {SITE.title}。我是 {SITE.owner}（{SITE.handle}），用这间公开工作台写长文：工程笔记、产品判断、观念，以及偶尔的随笔。
 		</p>
 		<p>站点本身尽量安静。文字优先，装饰让路。</p>
 		<p>
