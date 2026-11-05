@@ -4,7 +4,7 @@ description: "Post-Anthropocentric Technosovereign Constructivist Accelerationis
 date: 2026-11-05T23:00:00+08:00
 author: NemoArce
 lang: en
-category: 观念
+category: Ideas
 tags:
   - philosophy
   - AI
