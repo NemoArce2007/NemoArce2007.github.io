@@ -1,0 +1,336 @@
+:root {
+	--paper: #f6f1e7;
+	--paper-deep: #efe8da;
+	--ink: #1f1a16;
+	--ink-soft: #5a5248;
+	--rule: #d4cbbd;
+	--accent: #6e3c2e;
+	--measure: 65ch;
+	--page: min(42rem, calc(100% - 2.5rem));
+	--font-body:
+		'Source Serif 4', 'Songti SC', 'STSong', 'Noto Serif CJK SC', 'Source Han Serif SC',
+		Georgia, 'Times New Roman', serif;
+	color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	background: var(--paper);
+	color: var(--ink);
+	font-family: var(--font-body);
+	font-size: 112.5%;
+	line-height: 1.7;
+	-webkit-text-size-adjust: 100%;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+	color: var(--accent);
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.18em;
+}
+
+a:hover {
+	color: var(--ink);
+}
+
+a:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
+}
+
+.skip-link {
+	position: absolute;
+	left: 1rem;
+	top: -3rem;
+	background: var(--ink);
+	color: var(--paper);
+	padding: 0.4rem 0.7rem;
+}
+
+.skip-link:focus {
+	top: 0.75rem;
+	z-index: 2;
+}
+
+.shell {
+	width: var(--page);
+	margin-inline: auto;
+}
+
+.site-header {
+	padding: 2.25rem 0 1.5rem;
+}
+
+.site-header .shell {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1.5rem;
+	border-bottom: 1px solid var(--rule);
+	padding-bottom: 1.1rem;
+}
+
+.site-title {
+	font-size: 1.15rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	color: inherit;
+	text-decoration: none;
+}
+
+.site-title:hover {
+	color: var(--accent);
+}
+
+.nav {
+	display: flex;
+	gap: 1.1rem;
+	font-size: 0.95rem;
+}
+
+.nav a {
+	color: var(--ink-soft);
+	text-decoration: none;
+}
+
+.nav a:hover,
+.nav a[aria-current='page'] {
+	color: var(--ink);
+	text-decoration: underline;
+}
+
+main {
+	flex: 1;
+	padding: 2rem 0 4rem;
+}
+
+.page-kicker {
+	margin: 0 0 0.4rem;
+	color: var(--ink-soft);
+	font-size: 0.85rem;
+	letter-spacing: 0.06em;
+}
+
+.page-title {
+	margin: 0 0 1.25rem;
+	font-size: 2rem;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+}
+
+.lede {
+	margin: 0 0 2.25rem;
+	max-width: var(--measure);
+	color: var(--ink-soft);
+}
+
+.lede p {
+	margin: 0 0 0.9rem;
+}
+
+.lede p:last-child {
+	margin-bottom: 0;
+}
+
+.section-title {
+	margin: 0 0 1rem;
+	font-size: 1.05rem;
+	font-weight: 600;
+}
+
+.post-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	max-width: var(--measure);
+}
+
+.post-list li + li {
+	margin-top: 1.35rem;
+	padding-top: 1.35rem;
+	border-top: 1px solid var(--rule);
+}
+
+.post-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.45rem 0.85rem;
+	margin: 0 0 0.25rem;
+	color: var(--ink-soft);
+	font-size: 0.85rem;
+}
+
+.post-list a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.post-list a:hover {
+	color: var(--accent);
+}
+
+.post-list h2,
+.post-list h3 {
+	margin: 0;
+	font-size: 1.2rem;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.post-list p {
+	margin: 0.35rem 0 0;
+	color: var(--ink-soft);
+}
+
+.empty {
+	color: var(--ink-soft);
+}
+
+.more {
+	display: inline-block;
+	margin-top: 1.75rem;
+}
+
+.article-header {
+	margin-bottom: 2rem;
+	max-width: var(--measure);
+}
+
+.article-header h1 {
+	margin: 0.35rem 0 0;
+	font-size: 2.05rem;
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	line-height: 1.25;
+}
+
+.prose {
+	max-width: var(--measure);
+}
+
+.prose > * + * {
+	margin-top: 1.15em;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+	margin-top: 1.8em;
+	font-weight: 600;
+	letter-spacing: -0.015em;
+	line-height: 1.3;
+}
+
+.prose h2 {
+	font-size: 1.4rem;
+}
+
+.prose h3 {
+	font-size: 1.15rem;
+}
+
+.prose p,
+.prose li {
+	max-width: var(--measure);
+}
+
+.prose ul,
+.prose ol {
+	padding-left: 1.3em;
+}
+
+.prose blockquote {
+	margin: 1.4em 0;
+	padding: 0 0 0 1rem;
+	border-left: 2px solid var(--rule);
+	color: var(--ink-soft);
+}
+
+.prose hr {
+	border: 0;
+	border-top: 1px solid var(--rule);
+	margin: 2em 0;
+}
+
+.prose code {
+	font-family: ui-monospace, 'SFMono-Regular', 'Cascadia Code', Menlo, Consolas, monospace;
+	font-size: 0.88em;
+	background: var(--paper-deep);
+	padding: 0.1em 0.35em;
+}
+
+.prose pre {
+	overflow-x: auto;
+	padding: 1rem 1.1rem;
+	background: var(--paper-deep);
+	font-size: 0.88rem;
+	line-height: 1.55;
+}
+
+.prose pre code {
+	background: none;
+	padding: 0;
+}
+
+.prose img {
+	max-width: 100%;
+	height: auto;
+}
+
+.draft-note {
+	margin: 0 0 1.25rem;
+	padding: 0.55rem 0.75rem;
+	background: var(--paper-deep);
+	color: var(--ink-soft);
+	font-size: 0.9rem;
+}
+
+.site-footer {
+	padding: 0 0 2.5rem;
+	color: var(--ink-soft);
+	font-size: 0.9rem;
+}
+
+.site-footer .shell {
+	border-top: 1px solid var(--rule);
+	padding-top: 1.1rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 0.6rem 1.5rem;
+}
+
+.site-footer a {
+	color: inherit;
+}
+
+@media (max-width: 640px) {
+	html {
+		font-size: 106%;
+	}
+
+	.site-header .shell,
+	.site-footer .shell {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.page-title,
+	.article-header h1 {
+		font-size: 1.7rem;
+	}
+}

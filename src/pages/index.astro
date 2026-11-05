@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts } from '../lib/posts';
+import { SITE } from '../lib/site';
+
+const posts = (await getPosts()).slice(0, 5);
+---
+
+<BaseLayout current="home">
+	<p class="page-kicker">公开工作台</p>
+	<h1 class="page-title">{SITE.owner}</h1>
+	<div class="lede">
+		<p>写长文、记判断、留痕迹。不追读者，不堆装饰。</p>
+		<p>
+			文章按四类放置：技术、产品与创业、观念、随笔。导航默认中文；正文可以是中文或英文。
+		</p>
+	</div>
+	<h2 class="section-title">近作</h2>
+	<PostList posts={posts} headingLevel="h3" />
+	{posts.length > 0 && (
+		<a class="more" href="/posts">全部文章</a>
+	)}
+</BaseLayout>
