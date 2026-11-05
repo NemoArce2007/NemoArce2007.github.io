@@ -23,7 +23,7 @@ npm run dev
 
 ## 写一篇文章
 
-1. 在 `src/content/posts/` 新建 `.md` 或 `.mdx` 文件。文件名即 slug，例如 `gongzuotai-kaizhang.md` → `/posts/gongzuotai-kaizhang`。
+1. 在 `src/content/posts/` 新建 `.md` 或 `.mdx` 文件。文件名即 slug，例如 `hello.md` → `/posts/hello`。
 2. 填好 frontmatter：
 
 ```md

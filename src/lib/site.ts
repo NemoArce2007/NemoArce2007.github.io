@@ -2,7 +2,7 @@ export const SITE = {
 	title: "NemoArce's Blog",
 	owner: 'Jimmy Xu',
 	handle: 'NemoArce2007',
-	description: "NemoArce's Blog：写长文、记判断、留痕迹。",
+	description: "NemoArce's Blog",
 	url: 'https://nemoarce2007.github.io',
 	github: 'https://github.com/NemoArce2007',
 } as const;
