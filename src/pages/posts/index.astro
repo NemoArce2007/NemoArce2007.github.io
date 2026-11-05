@@ -2,18 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostList from '../../components/PostList.astro';
 import { getPosts } from '../../lib/posts';
-import { CATEGORIES, CATEGORY_BLURBS } from '../../lib/site';
+import { CATEGORIES } from '../../lib/site';
 
 const posts = await getPosts();
 ---
 
-<BaseLayout title="文章" current="posts">
-	<p class="page-kicker">目录</p>
-	<h1 class="page-title">文章</h1>
+<BaseLayout title="Articles" current="posts">
+	<h1 class="page-title">Articles</h1>
 	<div class="lede">
-		<p>
-			{CATEGORIES.map((category) => `${category}（${CATEGORY_BLURBS[category]}）`).join(' · ')}
-		</p>
+		<p>{CATEGORIES.join(' · ')}</p>
 	</div>
 	<PostList posts={posts} />
 </BaseLayout>

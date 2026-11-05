@@ -32,7 +32,7 @@ title: 标题
 description: 一两句摘要，用于列表、RSS 和 SEO。
 date: 2026-11-05
 lang: zh
-category: 随笔
+category: Miscellany
 tags: []
 draft: false
 ---
@@ -43,8 +43,8 @@ draft: false
 | `title` | 标题 |
 | `description` | 摘要 |
 | `date` | 发布日期 |
-| `lang` | `zh` 或 `en`。只影响正文 `lang`，导航仍是中文。 |
-| `category` | `技术` / `产品与创业` / `观念` / `随笔` |
+| `lang` | `zh` 或 `en`。只影响正文 `lang`，导航是英文。 |
+| `category` | `Tech` / `Product` / `Ideas` / `Miscellany` |
 | `tags` | 可选标签数组 |
 | `draft` | `true` 时只在 `npm run dev` 可见，生产构建不会发布 |
 
