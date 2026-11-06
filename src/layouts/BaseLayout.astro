@@ -9,6 +9,8 @@ interface Props {
 	description?: string;
 	lang?: 'zh' | 'en';
 	current?: 'home' | 'posts' | 'about' | 'post';
+	image?: string;
+	imageAlt?: string;
 }
 
 const {
@@ -16,11 +18,18 @@ const {
 	description = SITE.description,
 	lang = 'zh',
 	current = 'home',
+	image,
+	imageAlt,
 } = Astro.props;
 
 const pageTitle = title ? `${title} · ${SITE.title}` : SITE.title;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const rssHref = new URL('/rss.xml', Astro.site);
+const socialImage = image
+	? image.startsWith('/')
+		? new URL(image, Astro.site).href
+		: image
+	: undefined;
 ---
 
 <!doctype html>
@@ -39,7 +48,21 @@ const rssHref = new URL('/rss.xml', Astro.site);
 		<meta property="og:type" content={current === 'post' ? 'article' : 'website'} />
 		<meta property="og:url" content={canonical} />
 		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'zh_CN'} />
-		<meta name="twitter:card" content="summary" />
+		{
+			socialImage && (
+				<>
+					<meta property="og:image" content={socialImage} />
+					<meta name="twitter:image" content={socialImage} />
+					{imageAlt && (
+						<>
+							<meta property="og:image:alt" content={imageAlt} />
+							<meta name="twitter:image:alt" content={imageAlt} />
+						</>
+					)}
+				</>
+			)
+		}
+		<meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={description} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -7,6 +7,7 @@ const posts = defineCollection({
 	loader: glob({ base: './src/content/posts', pattern: '**/*.{md,mdx}' }),
 	schema: z.object({
 		title: z.string(),
+		subtitle: z.string().optional(),
 		author: z.string().optional(),
 		description: z.string(),
 		date: z.coerce.date(),
@@ -14,6 +15,8 @@ const posts = defineCollection({
 		category: z.enum(CATEGORIES),
 		tags: z.array(z.string()).default([]),
 		draft: z.boolean().default(false),
+		image: z.string().optional(),
+		imageAlt: z.string().optional(),
 	}),
 });
 
