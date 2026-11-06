@@ -1,5 +1,6 @@
 ---
 title: "Intelligence, Power, and the Right to Build"
+subtitle: "Post-Anthropocentric Technosovereign Constructivist Accelerationism"
 description: "Post-Anthropocentric Technosovereign Constructivist Accelerationism: an essay on intelligence, power, technological sovereignty, institutions, and the right to build."
 date: 2026-11-05T23:00:00+08:00
 author: NemoArce
@@ -11,11 +12,11 @@ tags:
   - technological sovereignty
   - accelerationism
 draft: false
+image: /images/posts/intelligence-power-earthrise.jpg
+imageAlt: Earthrise, photographed during Apollo 8 in 1968
 ---
 
-*Post-Anthropocentric Technosovereign Constructivist Accelerationism*
-
-![Earthrise, photographed during Apollo 8 in 1968](https://commons.wikimedia.org/wiki/Special:FilePath/Earthrise_-_AS08-14-2383.jpg?width=1200)
+![Earthrise, photographed during Apollo 8 in 1968](/images/posts/intelligence-power-earthrise.jpg)
 
 *Earthrise, Apollo 8, December 24, 1968. NASA / William Anders. Public domain. [Original image](https://commons.wikimedia.org/wiki/File:Earthrise_-_AS08-14-2383.jpg).*
 

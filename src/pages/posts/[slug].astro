@@ -34,6 +34,8 @@ const publishedAt = new Intl.DateTimeFormat('sv-SE', {
 	description={post.data.description}
 	lang={post.data.lang}
 	current="post"
+	image={post.data.image}
+	imageAlt={post.data.imageAlt}
 >
 	{post.data.draft && <p class="draft-note">草稿：仅在本地开发可见，生产构建不会输出。</p>}
 	<article>
@@ -47,6 +49,7 @@ const publishedAt = new Intl.DateTimeFormat('sv-SE', {
 				))}
 			</p>
 			<h1>{post.data.title}</h1>
+			{post.data.subtitle && <p class="article-subtitle">{post.data.subtitle}</p>}
 		</header>
 		<TableOfContents headings={headings} />
 		<div class="prose" lang={post.data.lang}>
